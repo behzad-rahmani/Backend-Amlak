@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PropertyRequest;
+use App\Http\Requests\PropertyUpdateRequest;
 use App\Http\Resources\PropertyResource;
+use App\Http\Resources\PropertyUpdateResource;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -65,5 +67,23 @@ class PropertyController extends Controller
             ]);
         }
 
+    }
+
+    public function  update(PropertyUpdateRequest $propertyUpdateRequest,Property $property)
+    {
+    $property->update($propertyUpdateRequest->all());
+    return response()-> json([
+       "message"=>"اطلاعات ملک مورد نظر با موفقیت به روز رسانی شد",
+        "data"=> new PropertyUpdateResource($property)
+    ]);
+    }
+
+    public function delete(Property $property)
+    {
+     $property->delete();
+        return response()-> json([
+            "message"=>"ملک مورد نظر حذف شد",
+
+        ]);
     }
 }

@@ -14,6 +14,9 @@ class PropertyCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+       return [
+           'title' => 'required|string|max:255',
+           'description' => 'nullable|string',
+       ];
     }
 }

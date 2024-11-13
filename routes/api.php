@@ -18,3 +18,5 @@ Route::post('property/amlak',[\App\Http\Controllers\PropertyController::class,'p
 Route::post('admin/amlak',[\App\Http\Controllers\AdminController::class,'admin']);
 Route::get('property/list',[\App\Http\Controllers\PropertyController::class,'showlist']);
 Route::get('property/{property:id}/show',[\App\Http\Controllers\PropertyController::class,'show']);
+Route::put('property/{property}/update',[\App\Http\Controllers\PropertyController::class,'update']);
+Route::delete('property/{property}/delete',[\App\Http\Controllers\PropertyController::class,'delete']);
